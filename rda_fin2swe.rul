@@ -1,0 +1,104 @@
+// manifestaation tunnisteen tarkenteet
+
+020I1 | 020I1  | S
+020I2 | 020I2  | S
+020$q | <B20$q  | RegReplaceTable('f02Xq_fin2swe.tbl', 'g'); 
+020$? | <B20$?  | S
+
+B20   | 020     | S
+
+
+// funktiotermit
+
+100I1 | 100I1  | S
+100I2 | 100I2  | S
+100$e | <A10$e  | RegReplaceTable('funktiot_fin2swe.tbl', 'g'); 
+100$? | <A10$?  | S
+
+A10   | 100     | S
+
+110I1 | 110I1  | S
+110I2 | 110I2  | S
+110$e | <A11$e  | RegReplaceTable('funktiot_fin2swe.tbl', 'g'); 
+110$? | <A11$?  | S
+
+A11   | 110     | S
+
+111I1 | 111I1  | S
+111I2 | 111I2  | S
+111$e | <A12$j  | RegReplaceTable('funktiot_fin2swe.tbl', 'g'); 
+111$? | <A12$?  | S
+
+A12   | 111     | S
+
+700I1 | 700I1  | S
+700I2 | 700I2  | S
+700$e | <A70$e  | RegReplaceTable('funktiot_fin2swe.tbl', 'g');
+700$? | <A70$?  | S
+
+A70   | 700     | S
+
+710I1 | 710I1  | S
+710I2 | 710I2  | S
+710$e | <A71$e  | RegReplaceTable('funktiot_fin2swe.tbl', 'g');
+710$? | <A71$?  | S
+
+A71   | 710     | S
+
+711I1 | 711I1  | S
+711I2 | 711I2  | S
+711$e | <A72$j  | RegReplaceTable('funktiot_fin2swe.tbl', 'g');
+711$? | <A72$?  | S
+
+A72   | 711     | S
+
+// 33X-kentÃt
+
+336I1           | 336I1           | S
+336I2           | 336I2           | S
+336 | 336 | S ;  RegReplaceTable('336_rda_fin2swe.tbl','g')
+
+337I1           | 337I1           | S
+337I2           | 337I2           | S
+337 | 337 | S ;  RegReplaceTable('337_rda_fin2swe.tbl','g')
+
+338I1           | 338I1           | S
+338I2           | 338I2           | S
+338 | 338 | S ;  RegReplaceTable('338_rda_fin2swe.tbl','g')
+
+
+
+#if (TAG != 'DEL')
+???I1           | ???I1           | S
+???I2           | ???I2           | S
+???             | ???             | S
+#endif
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
