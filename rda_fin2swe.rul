@@ -52,7 +52,14 @@ A71   | 710     | S
 
 A72   | 711     | S
 
-// 33X-kentÃt
+800I1 | 800I1  | S
+800I2 | 800I2  | S
+800$e | <A80$e  | RegReplaceTable('funktiot_fin2swe.tbl', 'g');
+800$? | <A80$?  | S
+
+A80   | 800     | S
+
+// 33X-kentÃ¤t
 
 336I1           | 336I1           | S
 336I2           | 336I2           | S
