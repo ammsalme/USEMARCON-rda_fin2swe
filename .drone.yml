@@ -1,28 +1,28 @@
-branches: master
+branches: [master]
 matrix:
   include:
   - HOST: replikointi-kk.lib.helsinki.fi
     USER: usemarcon
-    DIRECTORY: /opt/usemarcon
+    DIRECTORY: /opt/usemarcon/rda_fin2swe
 #  - HOST: linnea1.csc.fi
 #    USER: voyager
-#    DIRECTORY: /m1/voyager/usemarcon
+#    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
 #  - HOST: linnea3.csc.fi
 #    USER: voyager
-#    DIRECTORY: /m1/voyager/usemarcon
+#    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
 #  - HOST: armas.csc.fi
 #    USER: voyager
-#    DIRECTORY: /m1/voyager/usemarcon
+#    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
 pipeline:
   package:
     image: busybox:1
     commands:
-    - tar -czf package.tar.gz bin lib
+    - tar -czf package.tar.gz *
   copy-package:
     image: quay.io/natlibfi/drone-plugin-scp
     host: ${HOST}
     username: ${USER}
-    target: ${DIRECTORY}/rda_fin2sw
+    target: ${DIRECTORY}
     source: package.tar.gz
     rm: true
     secrets:
