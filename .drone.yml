@@ -2,7 +2,8 @@ branches: [master]
 matrix:
   include:
   - HOST: replikointi-kk.lib.helsinki.fi
-    USER: usemarcon 
+    USER: usemarcon
+    DIRECTORY: /opt/usemarcon/rda_fin2swe
 #  - HOST: linnea1.csc.fi
 #    USER: voyager
 #    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
@@ -13,12 +14,13 @@ matrix:
 #    USER: voyager
 #    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
 pipeline:
-  check:
+  stop:
     image: quay.io/natlibfi/drone-plugin-ssh
     host: ${HOST}
     username: ${USER}
     script:
-    - echo foo
+    - replication/app/bin/aleph_replication.sh stop
+    - exit 0
     secrets:
     - source: ssh_key_${HOST}_${USER}
       target: ssh_key
