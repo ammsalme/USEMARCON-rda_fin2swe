@@ -1,4 +1,4 @@
-branches: [master]
+#branches: [master]
 matrix:
   include:
   - HOST: replikointi-kk.lib.helsinki.fi
@@ -16,10 +16,10 @@ matrix:
 pipeline:
   stop:
     image: quay.io/natlibfi/drone-plugin-ssh
-    host: ${HOST}
-    username: ${USER}
+    host: "${HOST}"
+    username: "${USER}"
     script:
-    - replication/app/bin/aleph_replication.sh stop
+    - date
     - exit 0
     secrets:
     - source: "ssh_key_${HOST}_${USER}"
