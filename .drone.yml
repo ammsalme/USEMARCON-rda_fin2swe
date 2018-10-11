@@ -1,4 +1,3 @@
-branches: [master]
 matrix:
   include:
   - HOST: replikointi-kk.lib.helsinki.fi
@@ -14,16 +13,6 @@ matrix:
 #    USER: voyager
 #    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
 pipeline:
-  stop:
-    image: quay.io/natlibfi/drone-plugin-ssh
-    host: "${HOST}"
-    username: "${USER}"
-    script:
-    - date
-    - exit 0
-    secrets:
-    - source: "ssh_key_${HOST}_${USER}"
-      target: ssh_key
   package:
     image: busybox:1
     commands:
