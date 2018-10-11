@@ -3,6 +3,9 @@ matrix:
   - HOST: replikointi-kk.lib.helsinki.fi
     USER: usemarcon
     DIRECTORY: /opt/usemarcon/rda_fin2swe
+  - HOST: libtest2.csc.fi
+    USER: voyager
+    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
 #  - HOST: linnea1.csc.fi
 #    USER: voyager
 #    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
