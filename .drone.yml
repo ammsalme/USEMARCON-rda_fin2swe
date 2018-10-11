@@ -22,7 +22,7 @@ pipeline:
     - replication/app/bin/aleph_replication.sh stop
     - exit 0
     secrets:
-    - source: "ssh_key_${HOST}_${USER}""
+    - source: "ssh_key_${HOST}_${USER}"
       target: ssh_key
   package:
     image: busybox:1
