@@ -1,4 +1,4 @@
-#branches: [master]
+branches: [master]
 matrix:
   include:
   - HOST: replikointi-kk.lib.helsinki.fi
