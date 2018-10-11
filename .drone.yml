@@ -2,8 +2,7 @@ branches: [master]
 matrix:
   include:
   - HOST: replikointi-kk.lib.helsinki.fi
-    USER: usemarcon
-    DIRECTORY: /opt/usemarcon/rda_fin2swe
+    USER: usemarcon 
 #  - HOST: linnea1.csc.fi
 #    USER: voyager
 #    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
