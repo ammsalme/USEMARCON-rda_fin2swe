@@ -1,0 +1,6 @@
+// 300-kenttä
+
+300I1           | 300I1           | S
+300I2           | 300I2           | S
+300 | 300 | S ;  RegReplaceTable('300_rda_fin2swe.tbl','g');
+#include  "rda_fin2swe.rul"
