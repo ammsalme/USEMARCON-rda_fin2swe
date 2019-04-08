@@ -1,42 +1,145 @@
-matrix:
-  include:
-  - HOST: replikointi-kk.lib.helsinki.fi
-    USER: usemarcon
-    DIRECTORY: /opt/usemarcon/rda_fin2swe
-  - HOST: libtest2.csc.fi
-    USER: voyager
-    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
-#  - HOST: linnea1.csc.fi
-#    USER: voyager
-#    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
-#  - HOST: linnea3.csc.fi
-#    USER: voyager
-#    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
-#  - HOST: armas.csc.fi
-#    USER: voyager
-#    DIRECTORY: /m1/voyager/usemarcon/rda_fin2swe
-pipeline:
-  package:
-    image: busybox:1
-    commands:
-    - tar -czf package.tar.gz *
-  copy-package:
-    image: quay.io/natlibfi/drone-plugin-scp
-    host: ${HOST}
-    username: ${USER}
-    target: ${DIRECTORY}
-    source: package.tar.gz
+---
+kind: pipeline
+name: linnea1.csc.fi
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: deploy
+  image: quay.io/natlibfi/drone-plugin-scp
+  settings:
+    host: linnea1.csc.fi
+    key:
+      from_secret: ssh_key_linnea1.csc.fi
     rm: true
-    secrets:
-    - source: ssh_key_${HOST}_${USER}
-      target: ssh_key
-  extract-package:
-    image: quay.io/natlibfi/drone-plugin-ssh
-    host: ${HOST}
-    username: ${USER}
-    script:
-    - tar -xf ${DIRECTORY}/package.tar.gz -C ${DIRECTORY}
-    - rm ${DIRECTORY}/package.tar.gz
-    secrets:
-    - source: ssh_key_${HOST}_${USER}
-      target: ssh_key
+    source:
+    - "*"
+    tar_exec: /usr/sfw/bin/gtar
+    target:  /m1/voyager/usemarcon/rda_fin2swe
+    username:
+      from_secret: username_linnea1.csc.fi
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+---
+kind: pipeline
+name: linnea3.csc.fi
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: deploy
+  image: quay.io/natlibfi/drone-plugin-scp
+  settings:
+    host: linnea3.csc.fi
+    key:
+      from_secret: ssh_key_linnea3.csc.fi
+    rm: true
+    source:
+    - "*"
+    tar_exec: /usr/sfw/bin/gtar
+    target:  /m1/voyager/usemarcon/rda_fin2swe
+    username:
+      from_secret: username_linnea3.csc.fi
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+---
+kind: pipeline
+name: armas.csc.fi
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: deploy
+  image: quay.io/natlibfi/drone-plugin-scp
+  settings:
+    host: armas.csc.fi
+    key:
+      from_secret: ssh_key_armas.csc.fi
+    rm: true
+    source:
+    - "*"
+    tar_exec: /usr/sfw/bin/gtar
+    target:  /m1/voyager/usemarcon/rda_fin2swe
+    username:
+      from_secret: username_armas.csc.fi
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+---
+kind: pipeline
+name: libtest2.csc.fi
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: deploy
+  image: quay.io/natlibfi/drone-plugin-scp
+  settings:
+    host: libtest2.csc.fi
+    key:
+      from_secret: ssh_key_libtest2.csc.fi
+    rm: true
+    source:
+    - "*"
+    tar_exec: /usr/sfw/bin/gtar
+    target:  /m1/voyager/usemarcon/rda_fin2swe
+    username:
+      from_secret: username_libtest2.csc.fi
+
+trigger:
+  branch:
+  - test
+  event:
+  - push
+
+---
+kind: pipeline
+name: replikointi-kk.lib.helsinki.fi
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: deploy
+  image: quay.io/natlibfi/drone-plugin-scp
+  settings:
+    host: replikointi-kk.lib.helsinki.fi
+    key:
+      from_secret: ssh_key_replikointi-kk.lib.helsinki.fi
+    rm: true
+    source:
+    - "*"
+    target:  /opt/usemarcon/rda_fin2swe
+    username:
+      from_secret: username_replikointi-kk.lib.helsinki.fi
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+
+...
